@@ -1,0 +1,133 @@
+cik,ticker,name,sic,sic_desc,city,state,zip
+0000804328,QCOM,QUALCOMM INC/DE,3663,Radio & Tv Broadcasting & Communications Equipment,SAN DIEGO,CA,92121
+0000726728,O,REALTY INCOME CORP,6798,Real Estate Investment Trusts,SAN DIEGO,CA,92130
+0001032208,SRE,SEMPRA,4932,Gas & Other Services Combined,SAN DIEGO,CA,92101
+0001093557,DXCM,DEXCOM INC,3841,Surgical & Medical Instruments & Apparatus,SAN DIEGO,CA,92121
+0000943819,RMD,RESMED INC,3841,Surgical & Medical Instruments & Apparatus,SAN DIEGO,CA,92123
+0001110803,ILMN,"ILLUMINA, INC.",3826,Laboratory Analytical Instruments,SAN DIEGO,CA,92122
+0001397911,LPLA,LPL Financial Holdings Inc.,6200,"Security & Commodity Brokers, Dealers, Exchanges & Services",SAN DIEGO,CA,92121
+0000914475,NBIX,NEUROCRINE BIOSCIENCES INC,2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92130
+0001159036,HALO,"HALOZYME THERAPEUTICS, INC.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92130
+0001069258,KTOS,"KRATOS DEFENSE & SECURITY SOLUTIONS, INC.",3760,Guided Missiles & Space Vehicles & Parts,SAN DIEGO,CA,92131
+0000797721,VSAT,VIASAT INC,4899,"Communications Services, NEC",CARLSBAD,CA,92009
+0000874015,IONS,IONIS PHARMACEUTICALS INC,2834,Pharmaceutical Preparations,CARLSBAD,CA,92010
+0001658247,CRNX,"Crinetics Pharmaceuticals, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001326110,IBRX,"ImmunityBio, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001889109,BLTE,"BELITE BIO, INC",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001438533,TVTX,"Travere Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001761918,ERAS,"Erasca, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001288469,MXL,"MAXLINEAR, INC",3674,Semiconductors & Related Devices,CARLSBAD,CA,92008
+0002065636,MWH,"SOLV Energy, Inc.",1600,Heavy Construction Other Than Bldg Const - Contractors,SAN DIEGO,CA,92127
+0000886163,LGND,LIGAND PHARMACEUTICALS INC,2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001041803,PSMT,PRICESMART INC,5331,Retail-Variety Stores,SAN DIEGO,CA,92123
+0001070494,ACAD,ACADIA PHARMACEUTICALS INC,2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001607678,VKTX,"Viking Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,
+0001761312,PLMR,"Palomar Holdings, Inc.",6331,"Fire, Marine & Casualty Insurance",LA JOLLA,CA,92037
+0001823239,MRVI,"MARAVAI LIFESCIENCES HOLDINGS, INC.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0000105132,WDFC,WD 40 CO,2890,Miscellaneous Chemical Products,SAN DIEGO,CA,92131
+0000837465,CALY,Callaway Golf Co,3949,"Sporting & Athletic Goods, NEC",CARLSBAD,CA,92008
+0000816761,TDC,TERADATA CORP /DE/,7372,Services-Prepackaged Software,SAN DIEGO,CA,92127
+0000021535,COHU,COHU INC,3825,Instruments For Meas & Testing of  Electricity & Elec Signals,POWAY,CA,92064
+0001084961,ECPG,ENCORE CAPITAL GROUP INC,6153,Short-Term Business Credit Institutions,SAN DIEGO,CA,92108
+0001500217,AAT,"American Assets Trust, Inc.",6798,Real Estate Investment Trusts,SAN DIEGO,CA,92121
+0001370053,ANAB,"ANAPTYSBIO, INC",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001438133,TNDM,TANDEM DIABETES CARE INC,3841,Surgical & Medical Instruments & Apparatus,San Diego,CA,92130
+0001863127,TYRA,"Tyra Biosciences, Inc.",2834,Pharmaceutical Preparations,CARLSBAD,CA,92008
+0002091349,TRAX,"First Tracks Biotherapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0002007919,INBX,"Inhibrx Biosciences, Inc.",2836,"Biological Products, (No Diagnostic Substances)",LA JOLLA,CA,92037
+0001350653,ATEC,"Alphatec Holdings, Inc.",3841,Surgical & Medical Instruments & Apparatus,CARLSBAD,CA,
+0001736946,ARLO,"Arlo Technologies, Inc.",7381,"Services-Detective, Guard & Armored Car Services",CARLSBAD,CA,92008
+0001817713,JANX,"Janux Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001422143,KURA,"Kura Oncology, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0002096300,AVEX,AEVEX Corp.,3721,Aircraft,SOLANA BEACH,CA,92075
+0001906324,QDEL,QuidelOrtho Corp,2835,In Vitro & In Vivo Diagnostic Substances,SAN DIEGO,CA,92121
+0001807120,DSGN,"Design Therapeutics, Inc.",2834,Pharmaceutical Preparations,CARLSBAD,CA,92011
+0000807863,MITK,MITEK SYSTEMS INC,3577,"Computer Peripheral Equipment, NEC",SAN DIEGO,CA,
+0001826470,WOOF,"Petco Health & Wellness Company, Inc.",5990,"Retail-Retail Stores, NEC",SAN DIEGO,CA,92127
+0001124105,GYRE,"GYRE THERAPEUTICS, INC.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001795815,BCAL,California BanCorp \ CA,6021,National Commercial Banks,SAN DIEGO,CA,92130
+0001855175,CTNM,"Contineum Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001671858,SPRY,"ARS Pharmaceuticals, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001855644,ZURA,Zura Bio Ltd,2836,"Biological Products, (No Diagnostic Substances)",LA JOLLA,CA,92037
+0001817241,ARTV,"Artiva Biotherapeutics, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001705284,PBAM,"Private Bancorp of America, Inc.",6021,National Commercial Banks,LA JOLLA,CA,92037
+0001285550,CLPT,"ClearPoint Neuro, Inc.",3841,Surgical & Medical Instruments & Apparatus,SOLANA BEACH,CA,92075
+0001839970,BLSM,"BlossomHill Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,
+0001794546,CARL,"CARLSMED, INC.",3841,Surgical & Medical Instruments & Apparatus,CARLSBAD,CA,92008
+0001133869,CAPR,"CAPRICOR THERAPEUTICS, INC.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001725160,ZNTL,"Zentalis Pharmaceuticals, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001357459,PALI,"PALISADE BIO, INC.",2836,"Biological Products, (No Diagnostic Substances)",CARLSBAD,CA,92009
+0000807882,JACK,JACK IN THE BOX INC,5812,Retail-Eating  Places,SAN DIEGO,CA,92123
+0001768224,ARCT,Arcturus Therapeutics Holdings Inc.,2834,Pharmaceutical Preparations,SAN DIEGO,CA,
+0001434316,FATE,FATE THERAPEUTICS INC,2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92131
+0001394056,OSS,"ONE STOP SYSTEMS, INC.",3571,Electronic Computers,ESCONDIDO,CA,92029
+0000876343,LCTX,"Lineage Cell Therapeutics, Inc.",2836,"Biological Products, (No Diagnostic Substances)",CARLSBAD,CA,92008
+0002093101,RNA,"Atrium Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001493761,TBCH,Turtle Beach Corp,3669,"Communications Equipment, NEC",SAN DIEGO,CA,92127
+0001419275,RTB,"RTB Digital, Inc.",8742,Services-Management Consulting Services,SAN DIEGO,CA,92108
+0001748137,NEOV,NeoVolta Inc.,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",POWAY,CA,92064
+0001274737,XGN,EXAGEN INC.,8071,Services-Medical Laboratories,VISTA,CA,92081
+0001934114,SUJA,"SUJA LIFE, INC.",2080,Beverages,OCEANSIDE,CA,92056
+0001835268,CNTB,Connect Biopharma Holdings Ltd,2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001815776,LENZ,"LENZ Therapeutics, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SOLANA BEACH,CA,92075
+0001746466,EQ,"Equillium, Inc.",2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001774857,AARD,"Aardvark Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92122
+0001705843,CBUS,"Cibus, Inc.",2870,Agricultural Chemicals,SAN DIEGO,CA,92121
+0000740664,RFIL,R F INDUSTRIES LTD,3678,Electronic Connectors,SAN DIEGO,CA,92127
+0001129928,ONCY,ONCOLYTICS BIOTECH INC,2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001786471,SEV,Aptera Motors Corp,3711,Motor Vehicles & Passenger Car Bodies,CARLSBAD,CA,92008
+0001917599,EDVR,Endeavor Bancorp,,,SAN DIEGO,CA,92101
+0000924383,GNSS,Genasys Inc.,3651,Household Audio & Video Equipment,SAN DIEGO,CA,92127
+0001331421,SDCO,"SDR Drone, Inc.",3721,Aircraft,ESCONDIDO,CA,92020
+0001728117,GOSS,"Gossamer Bio, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001213037,CRDF,"Cardiff Oncology, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001272842,AIRG,AIRGAIN INC,3663,Radio & Tv Broadcasting & Communications Equipment,SAN DIEGO,CA,92130
+0001226616,MNOV,MEDICINOVA INC,2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001022652,INSG,INSEEGO CORP.,3669,"Communications Equipment, NEC",SAN DIEGO,CA,92121
+0001782303,BOLD,"Boundless Bio, Inc.",2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001835579,IMA,"ImageneBio, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92130
+0000818033,HRTX,"HERON THERAPEUTICS, INC. /DE/",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001339970,ATYR,aTYR PHARMA INC,2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0000849145,HGBL,Heritage Global Inc.,7389,"Services-Business Services, NEC",SAN DIEGO,CA,92121
+0001070789,HYOR,HyOrc Corp,8711,Services-Engineering Services,SAN DIEGO,CA,92130
+0001262104,LITS,"Lite Strategy, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001663038,QTZM,Quantum Genesis AI Corp.,2860,Industrial Organic Chemicals,SAN DIEGO,CA,92127
+0001398805,BEEM,Beam Global,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",SAN DIEGO,CA,92121
+0000722572,FKWL,FRANKLIN WIRELESS CORP,3661,Telephone & Telegraph Apparatus,SAN DIEGO,CA,92123
+0001869601,EMCGF,Embrace Change Acquisition Corp.,6770,Blank Checks,SAN DIEGO,CA,92121
+0001657214,ILAL,International Land Alliance Inc.,6552,Land Subdividers & Developers (No Cemeteries),SAN DIEGO,CA,92101
+0001534133,CALC,"CalciMedica, Inc.",2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001074871,MODD,"Modular Medical, Inc.",3841,Surgical & Medical Instruments & Apparatus,SAN DIEGO,CA,92127
+0001311673,YTFD,"Yale Transaction Finders, Inc.",6770,Blank Checks,SAN DIEGO,CA,92101
+0001401914,DARE,"Dare Bioscience, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92122
+0001083743,FLUX,"Flux Power Holdings, Inc.",3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",VISTA,CA,92081
+0001070050,APCX,AppTech Payments Corp.,7372,Services-Prepackaged Software,CARLSBAD,CA,
+0001411690,BNGO,"Bionano Genomics, Inc.",3826,Laboratory Analytical Instruments,SAN DIEGO,CA,92121
+0000787253,NAII,NATURAL ALTERNATIVES INTERNATIONAL INC,2833,Medicinal Chemicals & Botanical Products,CARLSBAD,CA,92008
+0001372514,KPRX,KIORA PHARMACEUTICALS INC,2834,Pharmaceutical Preparations,ENCINITAS,CA,92024
+0001516551,SKYE,"Skye Bioscience, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001006028,PURE,"PURE BIOSCIENCE, INC.",2890,Miscellaneous Chemical Products,EL CAJON,CA,92019
+0001716947,ENSC,"Ensysce Biosciences, Inc.",2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001853816,DRMA,"Dermata Therapeutics, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001826892,BCAB,"BioAtla, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001178697,SONM,"DNA X, Inc.",3661,Telephone & Telegraph Apparatus,SAN DIEGO,CA,92121
+0001510964,CVSI,"CV Sciences, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92126
+0001810560,REVB,"REVELATION BIOSCIENCES, INC.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92122
+0001355790,ISCO,International Stem Cell CORP,2834,Pharmaceutical Preparations,SAN DIEGO,CA,92131
+0001824293,GRI,"GRI Bio, Inc.",2834,Pharmaceutical Preparations,LA JOLLA,CA,92037
+0001497253,VIVS,"VivoSim Labs, INC.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001855485,CLDI,"Calidi Biotherapeutics, Inc.",2836,"Biological Products, (No Diagnostic Substances)",SAN DIEGO,CA,92121
+0001621221,ARTL,"ARTELO BIOSCIENCES, INC.",2834,Pharmaceutical Preparations,SOLANA BEACH,CA,92075
+0001080657,SQFT,"Presidio Property Trust, Inc.",6798,Real Estate Investment Trusts,SAN DIEGO,CA,92123
+0000882291,AEMD,AETHLON MEDICAL INC,3841,Surgical & Medical Instruments & Apparatus,SAN DIEGO,CA,92121
+0001570937,PREM,Premier Air Charter Holdings Inc.,3841,Surgical & Medical Instruments & Apparatus,CARLSBAD,CA,92011
+0001694617,ROYL,"Royale Energy, Inc.",1311,Crude Petroleum & Natural Gas,EL CAJON,CA,92019
+0001618835,EVFM,"Evofem Biosciences, Inc.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92130
+0001836875,NVVE,Nuvve Holding Corp.,3690,"Miscellaneous Electrical Machinery, Equipment & Supplies",SAN DIEGO,CA,92106
+0001404804,OMTK,Omnitek Engineering Corp,3714,Motor Vehicle Parts & Accessories,VISTA,CA,92081
+0002128462,TLAC,Three Lions Acquisition Corp.,6770,Blank Checks,LA JOLLA,CA,92037
+0001514946,AXIM,"AXIM BIOTECHNOLOGIES, INC.",2834,Pharmaceutical Preparations,SAN DIEGO,CA,92121
+0001755347,CPLX,Certiplex Corp,7812,Services-Motion Picture & Video Tape Production,SAN MARCOS,CA,92078
+0001956237,ALMP,Almco Plumbing Inc,1700,Construction - Special Trade Contractors,SAN DIEGO,CA,92111
+0001823593,TSPH,TuSimple Holdings Inc.,7373,Services-Computer Integrated Systems Design,SAN DIEGO,CA,92122
+0000725394,DHTI,"Dalrada Technology Group, Inc.",7363,Services-Help Supply Services,ESCONDIDO,CA,92025
