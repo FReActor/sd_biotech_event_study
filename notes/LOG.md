@@ -1,3 +1,18 @@
+Day 3: 8/26
+
+Done:
+- Downloaded all 8-k filings of the companies from 2019-2025.
+- Confirmed that the timezone is UTC instead of eastern(the stock market time). And I converted the timezone into Eastern for Consequetiveness purpose
+- Extracted the companies that are:
+    1. out of the time range(4)(First Tracks, Atrium, BlossomHill, Oncolytics)
+    2. are foreign companies which submit 6-k files instead of 8-k(1)(Belite Bio)
+    3. in the list, yet only has 6- files from 2019-2025(1)(Connect Biopharma)
+  so 67 companies and 4788 files are kept.
+
+Findings:
+- What out of my expectation was that I found one company that belongs to the orginal list, yet all of the files from 2019-2025 are 6-k files. As a result I deleted it from the company list, since I decided to delete companies with 6-k filings.
+- All of the companies kept now are companies with only 8-k files from 2019-2025
+
 Day2: 8/25
 
 Done:
@@ -7,8 +22,6 @@ Done:
 Findings:
 - San Diego has 132 companies, and 73 of which are life science companies accordnig to my filter. This shows that 55% of the companies in San Diego are life science related, implying that San Diego is a center of life science.
 - Realized that multiple companies don't match the SICs they chose -- this is becasue SIC doesn't require verification. Also the definition of life science was , which might cause bias later.
-
-
 
 
 Day1: 8/24
