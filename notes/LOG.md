@@ -1,3 +1,17 @@
+Day 4: 8/27
+
+Done:
+- Filtered the 8-k filings based on their codes and kept those that I need for my papaer:
+Baseline group 1: 2.02, the financial report of the biotech compaies. They can be understood more easily.
+Baseline group 2: 5.02, the important job changes of the biotech companies. By downloading the text and search for key words such as 'CEO', 'CMO', 'CFO' etc. to determine that they are important enough to shift the stock price (MIGHT DELETE LATER)
+Group of interest: 1.01, 7.01, 8.01: these groups' filings need to be fed to the LLM to determine if they are relevant enough for the stock price.
+All the other groups are dropped.
+- After categorizing the groups, I downloaded the 99.1 files attached on the 8-k filings for future purposes.
+
+Findings:
+- The primary 8-k filings are not useful at times. It usually only contains the time, location, and other information that are not related. That's why I decided to shift to the 99.1 filings attached in 8-k filings.
+
+
 Day 3: 8/26
 
 Done:
@@ -12,6 +26,7 @@ Done:
 Findings:
 - What out of my expectation was that I found one company that belongs to the orginal list, yet all of the files from 2019-2025 are 6-k files. As a result I deleted it from the company list, since I decided to delete companies with 6-k filings.
 - All of the companies kept now are companies with only 8-k files from 2019-2025
+
 
 Day2: 8/25
 
