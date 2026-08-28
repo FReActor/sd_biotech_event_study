@@ -1,3 +1,16 @@
+Day 5: 8/28
+
+Done:
+- Trying to filter the clinical report from 7.01 filings. 
+- Decided to drop 1.01 filings and focus on the difference of people's reaction on clinical data and financial report.
+- Manually catogorized 100 filings beofre seeing LLM output to set up the baseline and check for accuracy later.
+- Decided to narrow down the research topic to: Does Information Complexity Slow Price Discovery? Clinical Trial Results versus Earnings Announcements in San Diego Biotechnology
+
+Findings:
+- I tried to filter by matching keywords in the beginning. But after 2,3 rounds of improvement I still found the matching system not satisfying enough. Human language can hardly be understood and filtered by matching keywords and I decided to implement LLM to help catagorize the filings.
+- Only 11/100 filings were catagorized into clinical data. Maybe FDA decisions are concentrated in 8.01
+- The samples are polluted because reverse mergers preserve the CIK while replacing the business
+
 Day 4: 8/27
 
 Done:
