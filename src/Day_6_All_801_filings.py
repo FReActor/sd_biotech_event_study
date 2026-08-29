@@ -1,0 +1,204 @@
+import os
+import re
+import time
+from pathlib import Path
+ 
+import anthropic
+import pandas as pd
+ 
+# ---------------------------------------------------------------
+TARGET_ITEM = "8.01"          
+MODEL = "claude-haiku-4-5-20251001"   
+MAX_CHARS = 1500
+# ---------------------------------------------------------------
+ 
+FILINGS = Path("data/raw/filings")
+EVENTS = Path("data/processed/events_8-k.csv")
+CACHE = Path("data/processed/llm_cache.csv")
+OUT = Path(f"data/processed/llm_labels_{TARGET_ITEM.replace('.', '')}.csv")
+ 
+COVER_OFFSET = 1200
+ITEM_SEARCH_WINDOW = 2000
+ 
+COVER_END_MARKERS = [
+    "emerging growth company",
+    "securities registered pursuant to section 12(b)",
+    "registrant's telephone number",
+    "registrant\u2019s telephone number",
+]
+ 
+ITEM_HEADER = re.compile(r"item\s+\d\.\d\d\.?", re.IGNORECASE)
+ 
+VALID = {"CLINICAL", "REGULATORY", "PRESENTATION", "OTHER"}
+ 
+SYSTEM_PROMPT = """You classify SEC 8-K filings from biotechnology companies into exactly one category.
+ 
+CLINICAL - results or data from a study in HUMAN subjects. This includes efficacy results, safety data, interim analyses, and translational or biomarker data. It includes data disclosed for the first time at a scientific conference, regardless of whether the format is a press release or a slide deck. It does NOT include animal or in vitro results.
+ 
+REGULATORY - a decision, designation, submission, or action by a drug regulator (FDA, EMA, or a national equivalent) where that regulatory action is the SUBJECT of the filing. If a regulator is mentioned only as background - for example a milestone payment for an already-approved product, an earnings release that notes positive FDA feedback, or a licensing deal that anticipates a future submission - the filing is NOT REGULATORY.
+ 
+PRESENTATION - investor decks, corporate overviews, or announcements of intent to present, where the content restates already-public information. Judge by content, not format: a deck containing first-disclosure trial results is CLINICAL, not PRESENTATION.
+ 
+OTHER - everything else: financings, personnel changes, M&A, partnerships, compliance notices, earnings, preclinical data. If a filing is about M&A, financing, or earnings, the answer is OTHER. Do not invent new category names.
+ 
+Output exactly one word."""
+ 
+ 
+def item_set(s):
+    return {i.strip() for i in str(s).split(",")}
+ 
+ 
+def strip_exhibit_preamble(body):
+    return re.sub(
+        r"^EX-99[^\n]{0,120}?Exhibit\s+99\.?\d*\s*",
+        "",
+        body,
+        flags=re.IGNORECASE,
+    )
+ 
+ 
+def find_cover_end(text):
+    low = text.lower()
+    best = None
+    for marker in COVER_END_MARKERS:
+        idx = low.rfind(marker)
+        if idx >= 0:
+            end = idx + len(marker)
+            if best is None or end > best:
+                best = end
+    return best
+ 
+ 
+def get_text(accession):
+    """Same extraction rule as the keyword classifier, but 1500 chars."""
+    path = FILINGS / f"{accession}.txt"
+    if not path.exists():
+        return None
+ 
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    if not text.strip():
+        return None
+ 
+    idx = text.find("EX-99")
+    if idx >= 0:
+        body = strip_exhibit_preamble(text[idx:])
+    else:
+        start = find_cover_end(text)
+        if start is None:
+            body = text[COVER_OFFSET:]
+        else:
+            window = text[start:start + ITEM_SEARCH_WINDOW]
+            m = ITEM_HEADER.search(window)
+            body = text[start + m.end():] if m else text[start:]
+ 
+    body = re.sub(r"\s+", " ", body).strip()
+    if not body:
+        return None
+    return body[:MAX_CHARS]
+ 
+ 
+client = anthropic.Anthropic()
+ 
+ 
+def classify(text, max_retries=5):
+    """Call the API, retrying on rate limits with exponential backoff."""
+    for attempt in range(max_retries):
+        try:
+            resp = client.messages.create(
+                model=MODEL,
+                max_tokens=10,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": text}],
+            )
+            raw = "".join(b.text for b in resp.content if b.type == "text")
+            label = raw.strip().split()[0].upper().strip(".,")
+            return label if label in VALID else f"INVALID:{raw[:40]}"
+ 
+        except anthropic.RateLimitError:
+            wait = 2 ** attempt
+            print(f"    rate limited, waiting {wait}s")
+            time.sleep(wait)
+        except Exception as exc:
+            print(f"    error: {exc}")
+            return "ERROR"
+ 
+    return "RATE_LIMITED"
+ 
+ 
+def load_cache():
+    if CACHE.exists():
+        df = pd.read_csv(CACHE, dtype=str)
+        return dict(zip(df["accession"], df["llm_label"]))
+    return {}
+ 
+ 
+def main():
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        raise SystemExit("ANTHROPIC_API_KEY not set. Restart VS Code after setx.")
+ 
+    events = pd.read_csv(EVENTS, dtype=str)
+    pool = events[events["items"].apply(lambda s: TARGET_ITEM in item_set(s))]
+    print(f"{TARGET_ITEM} filings: {len(pool)}")
+ 
+    cache = load_cache()
+    print(f"Already classified: {len(cache)}\n")
+ 
+    rows = []
+    calls = 0
+ 
+    for i, (_, row) in enumerate(pool.iterrows(), start=1):
+        acc = row["accession"]
+ 
+        if acc in cache:
+            label = cache[acc]
+        else:
+            text = get_text(acc)
+            if text is None:
+                label = "NO_TEXT"
+            else:
+                label = classify(text)
+                calls += 1
+ 
+            cache[acc] = label
+            # Write after every new call so Ctrl+C is safe
+            pd.DataFrame(
+                [{"accession": a, "llm_label": l} for a, l in cache.items()]
+            ).to_csv(CACHE, index=False)
+ 
+        rows.append({
+            "accession": acc,
+            "cik": row["cik"],
+            "name": row["name"],
+            "filing_date": row["filing_date"],
+            "acceptance_et": row["acceptance_et"],
+            "after_hours": row["after_hours"],
+            "items": row["items"],
+            "llm_label": label,
+        })
+ 
+        if i % 50 == 0:
+            print(f"  {i}/{len(pool)}  (new API calls: {calls})")
+ 
+    result = pd.DataFrame(rows)
+    result.to_csv(OUT, index=False)
+ 
+    print(f"\nNew API calls made: {calls}")
+    print("\nLabel distribution:")
+    print(result["llm_label"].value_counts())
+ 
+    bad = result[~result["llm_label"].isin(VALID | {"NO_TEXT"})]
+    if len(bad):
+        print(f"\n{len(bad)} rows with unexpected output:")
+        print(bad[["accession", "name", "llm_label"]].head(20).to_string(index=False))
+ 
+    print(f"\nSaved to {OUT}")
+ 
+ 
+if __name__ == "__main__":
+    main()
+    
+c = pd.read_csv("data/processed/llm_cache.csv")
+VALID = {"CLINICAL", "REGULATORY", "PRESENTATION", "OTHER"}
+c = c[c["llm_label"].isin(VALID)]
+c.to_csv("data/processed/llm_cache.csv", index=False)
+print(len(c))

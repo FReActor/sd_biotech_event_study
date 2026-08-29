@@ -1,3 +1,29 @@
+Day 6: 8/29:
+
+Done:
+- Applied Claude API to classify the 100 samples and assign them to different groups with the three encoding rules applied yesterday. Rules include: regulator must be the subject; conference presentations judged by content not format; human translational data counts as CLINICAL
+- Then applied LLM to classify all of the 8.01 and 7.01 filings. The results are in the Findings session.
+- Pufified the samples by checking their address. Confirmed geographic errors include:Gyre Therapeutics, Zura Bio, Kiora Pharmaceuticals, Ligand, Capricor. Dropped the companies that has less than 50% of historical filings based in San Diego. Result: 67 -> 60 companies, 4,788 -> 4,230 filings.
+
+Findings:
+- LLM classification:
+- Validated on the 100 hand-labeled filings first: Cohen's kappa = 0.817,
+raw agreement 90.0%. CLINICAL precision 0.82, recall 0.93 -- errs toward
+over-inclusion, which is the safer direction.
+- REGULATORY precision was 0.60, driven by two filings where FDA appears
+as background rather than as the subject. Only 3 true cases in the
+validation sample, so the estimate is unstable. Stopped iterating here
+to avoid overfitting the prompt to 100 filings.
+
+Results:
+                 7.01        8.01
+  OTHER          500 (54%)   878 (65%)
+  PRESENTATION   214 (23%)   115 ( 8%)
+  CLINICAL       141 (15%)   222 (16%)
+  REGULATORY      35 ( 4%)   131 (10%)
+  unusable        44 ( 5%)    12 ( 1%)
+
+
 Day 5: 8/28
 
 Done:

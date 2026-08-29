@@ -1,0 +1,158 @@
+import random
+import re
+import time
+from pathlib import Path
+
+import anthropic
+import pandas as pd
+
+MANUAL_LABELS = Path("data/processed/manual_labels.csv")
+FILINGS = Path("data/raw/filings")
+OUT = Path("data/processed/llm_labels_manual100.csv")
+
+MODEL = "claude-haiku-4-5-20251001"
+MAX_TOKENS = 10
+LLM_CHARS = 1500
+COVER_OFFSET = 1200
+ITEM_SEARCH_WINDOW = 2000
+
+COVER_END_MARKERS = [
+    "emerging growth company",
+    "securities registered pursuant to section 12(b)",
+    "registrant's telephone number",
+    "registrant\u2019s telephone number",
+]
+ITEM_HEADER = re.compile(r"item\s+\d\.\d\d\.?", re.IGNORECASE)
+
+SYSTEM_PROMPT = """You classify SEC 8-K filings from biotechnology companies into exactly one category.
+
+CLINICAL — results or data from a study in HUMAN subjects. This includes
+efficacy results, safety data, interim analyses, and translational or
+biomarker data. It includes data disclosed for the first time at a
+scientific conference, regardless of whether the format is a press
+release or a slide deck. It does NOT include animal or in vitro results.
+
+REGULATORY — a decision, designation, submission, or action by a drug
+regulator (FDA, EMA, or a national equivalent) where that regulatory
+action is the SUBJECT of the filing. If a regulator is mentioned only as
+background — for example a milestone payment for an already-approved
+product, or a licensing deal that anticipates a future submission — the
+filing is not REGULATORY.
+
+PRESENTATION — investor decks, corporate overviews, or announcements of
+intent to present, where the content restates already-public
+information. Judge by content, not format: a deck containing
+first-disclosure trial results is CLINICAL, not PRESENTATION.
+
+OTHER — everything else: financings, personnel changes, M&A,
+partnerships, compliance notices, earnings, preclinical data.
+
+Respond with only the category name. Output exactly one of the following: CLINICAL, REGULATORY, PRESENTATION, OTHER."""
+
+# --- extraction logic reused from Day_5_701_filtering.py, HEADLINE_CHARS -> LLM_CHARS ---
+
+def strip_exhibit_preamble(body):
+    return re.sub(
+        r"^EX-99[^\n]{0,120}?Exhibit\s+99\.?\d*\s*",
+        "",
+        body,
+        flags=re.IGNORECASE,
+    )
+
+def find_cover_end(text):
+    low = text.lower()
+    best = None
+    for marker in COVER_END_MARKERS:
+        idx = low.rfind(marker)
+        if idx >= 0:
+            end = idx + len(marker)
+            if best is None or end > best:
+                best = end
+    return best
+
+def get_body(accession, max_chars):
+    path = FILINGS / f"{accession}.txt"
+    if not path.exists():
+        return None, "missing_file"
+
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    if not text.strip():
+        return None, "empty_file"
+
+    idx = text.find("EX-99")
+    if idx >= 0:
+        body = strip_exhibit_preamble(text[idx:])
+        source = "exhibit"
+    else:
+        start = find_cover_end(text)
+        if start is None:
+            body = text[COVER_OFFSET:]
+            source = "primary_fallback"
+        else:
+            window = text[start:start + ITEM_SEARCH_WINDOW]
+            m = ITEM_HEADER.search(window)
+            if m:
+                body = text[start + m.end():]
+                source = "primary_item"
+            else:
+                body = text[start:]
+                source = "primary_marker_only"
+
+    body = re.sub(r"\s+", " ", body).strip()
+    return body[:max_chars], source
+
+# --- Anthropic classification with 429 retry ---
+
+client = anthropic.Anthropic()
+
+def classify_with_retry(text, max_retries=5):
+    for attempt in range(max_retries):
+        try:
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=MAX_TOKENS,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": text}],
+            )
+            return next((b.text for b in response.content if b.type == "text"), "").strip()
+        except anthropic.RateLimitError as e:
+            if attempt == max_retries - 1:
+                raise
+            retry_after = e.response.headers.get("retry-after")
+            delay = float(retry_after) if retry_after else min(60, (2 ** attempt) + random.uniform(0, 1))
+            print(f"  429 rate limited, retrying in {delay:.1f}s (attempt {attempt + 1}/{max_retries})")
+            time.sleep(delay)
+
+def main():
+    manual = pd.read_csv(MANUAL_LABELS, dtype=str)
+    print(f"Classifying {len(manual)} filings from {MANUAL_LABELS}")
+
+    rows = []
+    for i, row in manual.iterrows():
+        body, source = get_body(row["accession"], LLM_CHARS)
+        if body is None:
+            label = "NO_TEXT"
+        else:
+            label = classify_with_retry(body)
+
+        rows.append({
+            "accession": row["accession"],
+            "name": row["name"],
+            "filing_date": row["filing_date"],
+            "my_label": row.get("my_label", ""),
+            "llm_label": label,
+            "text_source": source,
+        })
+
+        if (i + 1) % 20 == 0:
+            print(f"  {i + 1}/{len(manual)} done")
+
+    result = pd.DataFrame(rows)
+    result.to_csv(OUT, index=False)
+
+    print(f"\nSaved to {OUT}")
+    print("\nLLM label distribution:")
+    print(result["llm_label"].value_counts())
+
+if __name__ == "__main__":
+    main()
