@@ -1,4 +1,24 @@
-Day 6: 8/29:
+Day 7: 8/30
+
+Done:
+- Merged 7.01 and 8.01 filings into a single event table. Added earning lables for 2.02 filings.
+- Pulled daily prices for all 60 companies plus SPY from yfinance,
+2018-01-01 to 2026-03-31.
+- Excluded 206 filings carrying BOTH 2.02 and (7.01 or 8.01). These mix earnings with a catalyst, so the price reaction cannot be attributed to either.
+
+Findings:
+- 165 filings appear under both 7.01 and 8.01. All 165 received IDENTICAL lables under two runs. 
+- CLINICAL dropped from 363 to 222 after removing confounded filings, which is a 39% cut.
+Final event table:
+EARNINGS      992
+CLINICAL      222
+REGULATORY    126
+PRESENTATION  236
+OTHER        1007
+unusable       43
+
+
+Day 6: 8/29
 
 Done:
 - Applied Claude API to classify the 100 samples and assign them to different groups with the three encoding rules applied yesterday. Rules include: regulator must be the subject; conference presentations judged by content not format; human translational data counts as CLINICAL
