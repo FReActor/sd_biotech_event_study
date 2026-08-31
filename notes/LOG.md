@@ -1,3 +1,24 @@
+Day 8: 8/31
+
+Done:
+- Set up the timezone of the events. I parsed them at UTC first and then converted to New York time
+- Aligned all filings to trading days, estimated the market model per event, computed AR and CAR over four windows
+- Produced diagnostic figures for the events. The four graphs include: ar0 distribution graph, ar0 clipped distribution graph, car graph, and drift scatter graph
+
+FIndings:
+- Beta median 1.040, IQR 0.767-1.380. Reasonable for biotech.
+- 13 events have beta < -1, all from DRMA and EQ, both thinly traded.
+- Clinical mean and median have OPPOSITE signs. The mean is positive and median is opposite. The shows a higher percentage of decrease among the biotech stock prices, yet the increase has substantially higher rates.
+
+Distributions (this is the substantive finding of the day):
+              mean    median   skew   kurtosis   share negative
+  CLINICAL    3.229   -1.367    9.91    123.19        56.8%
+  EARNINGS    0.221   -0.248    0.62      9.55        51.5%
+  REGULATORY -1.277   -0.468   -1.97      7.59        52.8%
+
+- This implies that most findings are dissapointing(which decreases the stock price), but good fidings greatly boosts the stock prcie
+
+
 Day 7: 8/30
 
 Done:
