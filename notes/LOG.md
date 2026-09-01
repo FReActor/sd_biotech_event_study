@@ -1,3 +1,19 @@
+Day 9: 9/1
+
+Done:
+- Built the time place bo tests for the events: for each 8-k filings, I drew fake event dates of the same stocks from the same month, and ran the identical market model and CAR piepline again. I assigned them to the same month considering that 2022 biotech stocks experienced huge price drop.
+- The test went through three different versions: radius 5, 1draw; radius 15, 1 draw; radius 5, 20draws. The final one was the most stable one.
+- Corrected the median CAR aggregation: compute CAR per event first, then take the median across events, instead of cumulating daily medians.
+- Traced the clinical car_leak baseline anomaly and found that it was caused byy sample composition. Small companies are undergoing sustained decline of stock prices
+
+Findings:
+- The market model is essentially unbiased. Median placebo CAR sits between -0.10% and -0.51% across all three labels for ar0, car_event, and car_drift. Mean placebo AR(0) for CLINICAL is +0.05%.
+- The median says a typical clinical announcement drops about 1% and then stablizes; the mean says a large jump followed by reversal.
+- median: CLINICAL ar0 -1.14%, car_event -0.92%, car_drift -0.13%
+  mean:   CLINICAL ar0 +3.18%, car_event +2.37%, car_drift -4.45%
+- The placebo baseline must be taken out when doing Q1 leakage test.
+
+
 Day 8: 8/31
 
 Done:
