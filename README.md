@@ -23,16 +23,15 @@ No detectable difference from earnings announcements.
 
 | Script | What it does | Output |
 |---|---|---|
-| `01_fetch_universe.py` | Scans 7,997 SEC EDGAR filers, extracts address and SIC code for each | `all_companies.csv` |
-| `02_filter_companies.py` | Filters to San Diego County life sciences firms | `sd_lifesci_companies.csv` |
-| `03_fetch_filings.py` | Pulls 8-K metadata and filing text, including EX-99 exhibits | `events_8-k.csv`, `data/raw/filings/` |
-| `04_classify.py` | Labels filings via the Anthropic API: CLINICAL / REGULATORY / PRESENTATION / OTHER | `llm_labels_*.csv` |
-| `05_build_events.py` | Aligns events to trading days, deduplicates, flags exclusions | `events_aligned.csv` |
-| `06_estimate_car.py` | Estimates per-event market models, computes AR and CAR | `car.csv`, `ar_panel.csv` |
-| `07_placebo.py` | Draws 24,600 matched non-event dates, runs the identical pipeline | `placebo_car.csv` |
-| `08_tests.py` | Primary hypothesis tests | console |
-| `09_robustness.py` | Five robustness specifications | console |
-| `10_plot.py` | Figures | `figures/` |
+| `Day_2_Data_Collection.py` | Scans 7,997 SEC EDGAR filers, extracts address and SIC code for each | `all_companies.csv` |
+| `Day_2_Data_Filter.py` | Filters to San Diego County life sciences firms | `sd_lifesci_companies.csv` |
+| `Day_3_8-k_Collection.py.py` | Pulls 8-K metadata and filing text | `events_8-k.csv`|
+| `Day_6_All_701_filings.py` | Classifies Item 7.01 filings via the Anthropic API | `llm_labels_701.csv` |
+| `Day_6_All_801_filings.py` | 	Classifies Item 8.01 filings | `llm_labels_801.csv` |
+| `Day_6_kappa.py` | Compares LLM labels against the 100 hand-labelled filings, reports Cohen's kappa and the confusion matrix | console |
+| `Day_7_filings_merging.py` | Merges 7.01 and 8.01 labels, adds EARNINGS from Item 2.02, drops 206 confounded filings | `events_final.csv` |
+| `Day_8_estimate_car.py` | Estimates a market model per event over [t−250, t−31] | `car.csv`, `ar_panel.csv` |
+| `Day_9_Time_placebo_test.py` | Draws 20 matched non-event dates per event and runs the identical pipeline | `placebo_car.csv` |
 
 ## Data sources
 - SEC EDGAR submissions API — company metadata and 8-K filings
