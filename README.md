@@ -4,7 +4,7 @@ This event study tests whether equity prices absorb clinical trial results more 
 Clinical announcements are more technical and harder to understand, while earnings are standardized. If interpretive 
 difficulty slows price discovery, the two should behave differently.
 
-**Sample:** 60 San Diego life sciences firms, 2,349 events, 2019–2025.
+**Sample:** 60 San Diego life sciences firms, 2,314 events, 2019–2025.
 
 **Finding:** Clinical announcements produce a significant same-day price
 reaction, but no pre-announcement leakage and no post-announcement drift.
