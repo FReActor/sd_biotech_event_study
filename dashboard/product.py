@@ -18,7 +18,7 @@ import streamlit as st
 
 from data import DATA, load_car
 
-APP_NAME = "SD Biotech Analyzer"
+APP_NAME = "Catalyst SD"
 TAGLINE = "How hard do San Diego biotech stocks move on news?"
 
 LABEL_NAMES = {
