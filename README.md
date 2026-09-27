@@ -1,5 +1,7 @@
 # Information Efficiency in Life Sciences Equity Prices
 
+**🌐 [Live demo](https://catalystsd.streamlit.app/)**: interactive dashboard of the results (may take ~30s to wake up).
+
 This event study tests whether equity prices absorb clinical trial results more slowly than quarterly earnings. 
 Clinical announcements are more technical and harder to understand, while earnings are standardized. If interpretive 
 difficulty slows price discovery, the two should behave differently.
