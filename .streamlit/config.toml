@@ -1,0 +1,43 @@
+[theme]
+# Dark theme: black background, white text, orange for controls and key figures
+base = "dark"
+primaryColor = "#ff7a3d"
+backgroundColor = "#0f0f0e"
+secondaryBackgroundColor = "#1c1c1a"
+textColor = "#f3f2ee"
+linkColor = "#ff9a66"
+borderColor = "#34332f"
+dataframeBorderColor = "#3d3c38"
+dataframeHeaderBackgroundColor = "#1c1c1a"
+baseRadius = "small"
+baseFontSize = 17
+
+# Inter everywhere for a product look. Source Serif 4 is only used by the
+# research article header (see assets/style.css). Both fonts are bundled in
+# dashboard/static/fonts, so they load offline too.
+font = "Inter, sans-serif"
+headingFont = "Inter, sans-serif"
+headingFontWeights = [700, 650, 600]
+# Smaller section headings (h2, h3) so pages have one clear title
+headingFontSizes = ["2.25rem", "1.4rem", "1.12rem"]
+
+[[theme.fontFaces]]
+family = "Inter"
+url = "app/static/fonts/inter-latin-wght-normal.woff2"
+weight = "100 900"
+style = "normal"
+
+[[theme.fontFaces]]
+family = "SourceSerif"
+url = "app/static/fonts/source-serif-4-latin-wght-normal.woff2"
+weight = "200 900"
+style = "normal"
+
+[server]
+headless = true
+# Serve dashboard/static/ (the font files) at app/static/
+enableStaticServing = true
+
+[client]
+# Hide the "Deploy" button and the three-dot menu for viewers
+toolbarMode = "minimal"
