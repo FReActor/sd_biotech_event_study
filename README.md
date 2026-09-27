@@ -10,7 +10,7 @@ difficulty slows price discovery, the two should behave differently.
 reaction, but no pre-announcement leakage and no post-announcement drift.
 No detectable difference from earnings announcements.
 
-📄 [Summary paper](paper/Charles_Cheng_Information_Efficiency.pdf)
+📄 [Summary paper](paper/Charles_Cheng_Information_Efficiency.pdf)  **🌐 [Live demo](https://catalystsd.streamlit.app/)**: interactive dashboard of the results (may take ~30s to wake up).
 
 **Results**
 | Window | Clinical | Placebo baseline | p |
